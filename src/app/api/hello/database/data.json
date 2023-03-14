@@ -1,0 +1,31 @@
+[
+    {
+        "id": 1,
+        "name": "Nancy Black",
+        "email": "nancyb@gmail.com",
+        "phone": "0805223678",
+        "Status":"accepted"
+    },
+    {
+        "id": 2,
+        "name": "David Mike",
+        "email": "Davidb@gmail.com",
+        "phone": "0805223678",
+        "Status":"Declined"
+    },
+
+    {
+        "id": 3,
+        "name": "Nancy Black",
+        "email": "nancyb@gmail.com",
+        "phone": "0805223678",
+        "Status":"accepted"
+    },
+    {
+        "id": 4,
+        "name": "David Mike",
+        "email": "Davidb@gmail.com",
+        "phone": "0805223678",
+        "Status":"Declined"
+    }
+]

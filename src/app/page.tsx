@@ -1,91 +1,64 @@
-import Image from 'next/image'
+'use client';
+import { useState, useEffect } from 'react';
 import { Inter } from 'next/font/google'
+import Head from 'next/head'
+import { BiUserPlus } from 'react-icons/bi';
 import styles from './page.module.css'
+import Table from './components/table';
+import Form from './components/form';
+import { UserAPI } from './api/hello/route';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  const [visibility, setVisibility] = useState(false)
+
+
+
+  // const handler = () => {
+  //   setVisibility(visibility ? false:true)
+  // }
+
+  const handler = () => {
+    setVisibility(!visibility)
+  }
+
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <section>
+      <Head>
+        <title> THE CRUD APP </title>
+        <meta name='description' content='Created with Nextjs and Nodejs app'></meta>
+        <link rel='icon' href='/favicon.ico'/>
+      </Head>
+      
+    <main className='py-5'>
+      <h1 className='text-xl md:text-5xl text-center font-bold py-10'> User_Dashboard</h1>
+
+      <div className='container mx-auto flex justify-between py-5 border-b'>
+        <div className="left flex gap-3">
+          <button onClick={handler} className='flex bg-green-500 text-white px-4 py-2 border rounded-md hover:bg-gray-900 hover:border-green-500'>
+            Add User <BiUserPlus className='ml-2'  size={23}  />
+          </button>
         </div>
+
+      
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
+       {/* Collapsable form */}
+ 
+         {visibility ?  <Form/>:<></> }  
+       
+
+
+        {/* User table data */}
+        <div className="container mx-auto">
+        <Table/>
         </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      
+  
     </main>
+    </section>
   )
 }

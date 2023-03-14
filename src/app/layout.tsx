@@ -1,4 +1,9 @@
 import './globals.css'
+import {QueryClientProvider, QueryClient, } from 'react-query';
+
+
+//create a client
+const queryClient = new QueryClient();
 
 export const metadata = {
   title: 'Create Next App',
